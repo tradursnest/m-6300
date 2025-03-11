@@ -71,7 +71,7 @@ const Performance = () => {
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="date" />
                   <YAxis domain={['dataMin - 100', 'dataMax + 100']} />
-                  <Tooltip formatter={(value) => [`$${value.toFixed(2)}`, '']} />
+                  <Tooltip formatter={(value) => [`$${typeof value === 'number' ? value.toFixed(2) : value}`, '']} />
                   <Legend />
                   <Line 
                     type="monotone" 
