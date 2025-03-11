@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 export interface Stock {
@@ -267,7 +266,7 @@ export const mockNews: NewsItem[] = [
   {
     id: '3',
     title: 'NVIDIA Surpasses $2 Trillion Market Cap on AI Chip Demand',
-    summary: 'NVIDIA's stock reached new heights, pushing its market cap above $2 trillion as demand for AI chips continues to exceed expectations.',
+    summary: 'NVIDIA\'s stock reached new heights, pushing its market cap above $2 trillion as demand for AI chips continues to exceed expectations.',
     source: 'Market Watch',
     url: '#',
     publishedAt: new Date(Date.now() - 3600000 * 8), // 8 hours ago
