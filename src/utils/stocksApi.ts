@@ -42,7 +42,18 @@ export interface NewsItem {
   relatedSymbols?: string[];
 }
 
-// Mock data for stocks
+export interface Cryptocurrency {
+  symbol: string;
+  name: string;
+  price: number;
+  change: number;
+  changePercent: number;
+  marketCap: number;
+  volume: number;
+  supply: number;
+  lastUpdated: Date;
+}
+
 export const mockStocks: Stock[] = [
   {
     symbol: 'AAPL',
@@ -126,7 +137,6 @@ export const mockStocks: Stock[] = [
   }
 ];
 
-// Mock data for market indices
 export const mockIndices: MarketIndex[] = [
   {
     symbol: 'SPX',
@@ -184,7 +194,6 @@ export const mockIndices: MarketIndex[] = [
   }
 ];
 
-// Mock data for currency pairs
 export const mockCurrencies: CurrencyPair[] = [
   {
     symbol: 'EUR/USD',
@@ -242,7 +251,6 @@ export const mockCurrencies: CurrencyPair[] = [
   }
 ];
 
-// Mock news data
 export const mockNews: NewsItem[] = [
   {
     id: '1',
@@ -250,7 +258,7 @@ export const mockNews: NewsItem[] = [
     summary: 'The Federal Reserve indicated it may begin cutting interest rates later this year if inflation continues to moderate, according to minutes from the recent FOMC meeting.',
     source: 'Financial Times',
     url: '#',
-    publishedAt: new Date(Date.now() - 3600000 * 2), // 2 hours ago
+    publishedAt: new Date(Date.now() - 3600000 * 2),
     relatedSymbols: ['SPX', 'DJI']
   },
   {
@@ -260,7 +268,7 @@ export const mockNews: NewsItem[] = [
     source: 'Tech Insider',
     url: '#',
     imageUrl: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=1470&auto=format&fit=crop',
-    publishedAt: new Date(Date.now() - 3600000 * 5), // 5 hours ago
+    publishedAt: new Date(Date.now() - 3600000 * 5),
     relatedSymbols: ['AAPL']
   },
   {
@@ -269,7 +277,7 @@ export const mockNews: NewsItem[] = [
     summary: 'NVIDIA\'s stock reached new heights, pushing its market cap above $2 trillion as demand for AI chips continues to exceed expectations.',
     source: 'Market Watch',
     url: '#',
-    publishedAt: new Date(Date.now() - 3600000 * 8), // 8 hours ago
+    publishedAt: new Date(Date.now() - 3600000 * 8),
     relatedSymbols: ['NVDA']
   },
   {
@@ -278,7 +286,7 @@ export const mockNews: NewsItem[] = [
     summary: 'Crude oil prices fell more than 2% on Thursday as investors weighed reports suggesting slower-than-expected global economic growth.',
     source: 'Energy Report',
     url: '#',
-    publishedAt: new Date(Date.now() - 3600000 * 10), // 10 hours ago
+    publishedAt: new Date(Date.now() - 3600000 * 10),
   },
   {
     id: '5',
@@ -287,12 +295,102 @@ export const mockNews: NewsItem[] = [
     source: 'Auto Insights',
     url: '#',
     imageUrl: 'https://images.unsplash.com/photo-1617788138017-80ad40651399?q=80&w=1632&auto=format&fit=crop',
-    publishedAt: new Date(Date.now() - 3600000 * 12), // 12 hours ago
+    publishedAt: new Date(Date.now() - 3600000 * 12),
     relatedSymbols: ['TSLA']
   }
 ];
 
-// Generate random stock price history data for charts
+export const mockCryptos: Cryptocurrency[] = [
+  {
+    symbol: 'BTC',
+    name: 'Bitcoin',
+    price: 65841.25,
+    change: 1203.45,
+    changePercent: 1.86,
+    marketCap: 1293000000000,
+    volume: 28740000000,
+    supply: 19637500,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'ETH',
+    name: 'Ethereum',
+    price: 3487.92,
+    change: 62.34,
+    changePercent: 1.82,
+    marketCap: 418700000000,
+    volume: 14280000000,
+    supply: 120100000,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'BNB',
+    name: 'Binance Coin',
+    price: 567.39,
+    change: -12.86,
+    changePercent: -2.22,
+    marketCap: 87900000000,
+    volume: 2945000000,
+    supply: 155000000,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'SOL',
+    name: 'Solana',
+    price: 143.28,
+    change: 8.57,
+    changePercent: 6.36,
+    marketCap: 61500000000,
+    volume: 4720000000,
+    supply: 429700000,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'XRP',
+    name: 'XRP',
+    price: 0.5483,
+    change: -0.0132,
+    changePercent: -2.35,
+    marketCap: 29700000000,
+    volume: 1830000000,
+    supply: 54200000000,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'DOGE',
+    name: 'Dogecoin',
+    price: 0.1245,
+    change: 0.0078,
+    changePercent: 6.68,
+    marketCap: 17800000000,
+    volume: 2640000000,
+    supply: 143200000000,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'ADA',
+    name: 'Cardano',
+    price: 0.4532,
+    change: -0.0085,
+    changePercent: -1.84,
+    marketCap: 16100000000,
+    volume: 492000000,
+    supply: 35500000000,
+    lastUpdated: new Date()
+  },
+  {
+    symbol: 'AVAX',
+    name: 'Avalanche',
+    price: 35.27,
+    change: 2.34,
+    changePercent: 7.10,
+    marketCap: 13300000000,
+    volume: 1280000000,
+    supply: 378000000,
+    lastUpdated: new Date()
+  }
+];
+
 export function generatePriceHistory(days: number = 30, startPrice: number = 100, volatility: number = 2): number[] {
   const prices: number[] = [startPrice];
   
@@ -305,7 +403,6 @@ export function generatePriceHistory(days: number = 30, startPrice: number = 100
   return prices;
 }
 
-// Format large numbers (for market cap, volume, etc.)
 export function formatNumber(num: number): string {
   if (num >= 1000000000000) {
     return `$${(num / 1000000000000).toFixed(2)}T`;
@@ -322,12 +419,10 @@ export function formatNumber(num: number): string {
   return `$${num.toFixed(2)}`;
 }
 
-// Format percentage changes
 export function formatPercentage(num: number): string {
   return `${num > 0 ? '+' : ''}${num.toFixed(2)}%`;
 }
 
-// Format currency amounts
 export function formatCurrency(amount: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -337,7 +432,6 @@ export function formatCurrency(amount: number): string {
   }).format(amount);
 }
 
-// Format date into a readable string
 export function formatDate(date: Date): string {
   const now = new Date();
   const diffInMs = now.getTime() - date.getTime();
@@ -356,7 +450,6 @@ export function formatDate(date: Date): string {
   }
 }
 
-// Simulate real-time data updates with random fluctuations
 export function useStockData(initialData: Stock[], updateInterval = 5000) {
   const [stocks, setStocks] = useState<Stock[]>(initialData);
   
@@ -386,7 +479,6 @@ export function useStockData(initialData: Stock[], updateInterval = 5000) {
   return stocks;
 }
 
-// Similar hook for market indices
 export function useMarketIndices(initialData: MarketIndex[], updateInterval = 8000) {
   const [indices, setIndices] = useState<MarketIndex[]>(initialData);
   
@@ -416,7 +508,6 @@ export function useMarketIndices(initialData: MarketIndex[], updateInterval = 80
   return indices;
 }
 
-// Similar hook for currency pairs
 export function useCurrencyPairs(initialData: CurrencyPair[], updateInterval = 10000) {
   const [currencies, setCurrencies] = useState<CurrencyPair[]>(initialData);
   
@@ -444,4 +535,34 @@ export function useCurrencyPairs(initialData: CurrencyPair[], updateInterval = 1
   }, [initialData, updateInterval]);
   
   return currencies;
+}
+
+export function useCryptoData(initialData: Cryptocurrency[], updateInterval = 7000) {
+  const [cryptos, setCryptos] = useState<Cryptocurrency[]>(initialData);
+  
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCryptos(prevCryptos => 
+        prevCryptos.map(crypto => {
+          const volatilityFactor = crypto.symbol === 'BTC' || crypto.symbol === 'ETH' ? 0.005 : 0.012;
+          const changeAmount = (Math.random() - 0.5) * (crypto.price * volatilityFactor);
+          const newPrice = Math.max(crypto.price + changeAmount, 0.000001);
+          const newChange = crypto.change + changeAmount;
+          const newChangePercent = (newChange / (newPrice - newChange)) * 100;
+          
+          return {
+            ...crypto,
+            price: parseFloat(newPrice.toFixed(crypto.price < 1 ? 4 : 2)),
+            change: parseFloat(newChange.toFixed(crypto.price < 1 ? 4 : 2)),
+            changePercent: parseFloat(newChangePercent.toFixed(2)),
+            lastUpdated: new Date()
+          };
+        })
+      );
+    }, updateInterval);
+    
+    return () => clearInterval(intervalId);
+  }, [initialData, updateInterval]);
+  
+  return cryptos;
 }
