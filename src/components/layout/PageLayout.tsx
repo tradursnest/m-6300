@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/layout/Navbar';
 import { Sidebar } from '@/components/layout/Sidebar';
+import { BannerAd } from '@/components/ads/BannerAd';
 
 interface PageLayoutProps {
   children: React.ReactNode;
@@ -25,6 +26,10 @@ export function PageLayout({ children, title }: PageLayoutProps) {
         <main className="flex-1 transition-all duration-300">
           <div className="container max-w-full p-4 lg:p-6 animate-fade-in">
             <h1 className="text-2xl font-bold mb-6">{title}</h1>
+            
+            {/* Banner Ad */}
+            <BannerAd className="mb-6 animate-slide-up" />
+            
             {children}
           </div>
         </main>
