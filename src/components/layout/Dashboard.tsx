@@ -13,6 +13,8 @@ import { MarketOverview } from '@/components/markets/MarketOverview';
 import { CurrencyExchange } from '@/components/currencies/CurrencyExchange';
 import { NewsCard } from '@/components/news/NewsCard';
 import { StatsCard } from '@/components/ui/StatsCard';
+import { SidebarAd } from '@/components/ads/SidebarAd';
+import { BannerAd } from '@/components/ads/BannerAd';
 import { BarChart3, TrendingDown, TrendingUp, Wallet2 } from 'lucide-react';
 
 export function Dashboard() {
@@ -24,10 +26,8 @@ export function Dashboard() {
   const indices = useMarketIndices(mockIndices);
   const currencies = useCurrencyPairs(mockCurrencies);
   
-  // Generate chart data for the selected stock
   const selectedStockHistory = generatePriceHistory(30, selectedStock.price, 2);
   
-  // Generate chart data for stock cards
   const stocksWithHistory = stocks.map(stock => {
     return {
       ...stock,
@@ -35,7 +35,6 @@ export function Dashboard() {
     };
   });
   
-  // Calculate market statistics
   const gainers = stocks.filter(stock => stock.changePercent > 0);
   const losers = stocks.filter(stock => stock.changePercent < 0);
   
@@ -59,6 +58,9 @@ export function Dashboard() {
         <main className="flex-1 transition-all duration-300">
           <div className="container max-w-full p-4 lg:p-6 animate-fade-in">
             <h1 className="text-2xl font-bold mb-6">Market Dashboard</h1>
+            
+            {/* Banner Ad */}
+            <BannerAd className="mb-6 animate-slide-up" />
             
             {/* Stats Row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6 animate-slide-up" style={{ '--delay': '100ms' } as React.CSSProperties}>
@@ -110,6 +112,9 @@ export function Dashboard() {
                     />
                   ))}
                 </div>
+                
+                {/* Sidebar Ad */}
+                <SidebarAd />
               </div>
               
               {/* Middle column - Chart and news */}
